@@ -16,11 +16,6 @@ router.get('/getUser', function(req, res, next) {
   });
 });
 
-router.post('/register', function(req, res, next) {
-  var params = req.body;
-  user.register(params,function(result) {
-    console.log(result);
-  });
-});
+
 
 module.exports = router;

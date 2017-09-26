@@ -2,32 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>homePage</title>
-    <script type="text/javascript" src="../js/jQuery.js"></script>
+    <title><%=title%></title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/css/froala_style.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/at.js/1.5.4/css/jquery.atwho.min.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/homePage.css">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/hux-blog.css">
     <!--<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">-->
     <!--<link rel="stylesheet" type="text/css" href="../css/codemirror.min.css">-->
     <!--<link rel="stylesheet" type="text/css" href="../css/froala_editor.pkgd.min.css">-->
     <!--<link rel="stylesheet" type="text/css" href="../css/froala_style.min.css">-->
     <!--<link rel="stylesheet" type="text/css" href="../css/jquery.atwho.min.css">-->
-    <script src="../js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <script type="text/javascript" src="../js/jquery.atwho.min.js"></script>
-    <script type="text/javascript" src="../js/codemirror.min.js"></script>
-    <script type="text/javascript" src="../js/xml.min.js"></script>
-    <script type="text/javascript" src="../js/jquery.atwho.min.js"></script>
-    <script type="text/javascript" src="../js/froala_editor.pkgd.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="../css/homePage.css">
-    <link type="text/css" rel="stylesheet" href="../css/hux-blog.css">
+
+
 
 </head>
 <body style="background-color: #e3efd2">
-    <div class="header" style="background-image: url('../jpg/banner_top.jpg');">
+    <div class="header">
         <div class="header-container clearfloat">
             <div class="header-left">
                 <a href="#" class="blog">博客</a>
@@ -860,43 +854,52 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        $(function() {
-            // Define data source for At.JS.
-            var datasource = ["Jacob", "Isabella", "Ethan", "Emma", "Michael", "Olivia" ];
+    <script type="text/javascript" src="/javascripts/jQuery.js"></script>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.atwho.min.js"></script>
+    <script type="text/javascript" src="/javascripts/codemirror.min.js"></script>
+    <script type="text/javascript" src="/javascripts/xml.min.js"></script>
+    <script type="text/javascript" src="/javascripts/jquery.atwho.min.js"></script>
+    <script type="text/javascript" src="/javascripts/froala_editor.pkgd.min.js"></script>
+    <script type="text/javascript" src="/javascripts/edit.js"></script>
+    <!--<script type="text/javascript">-->
+        <!--$(function() {-->
+            <!--// Define data source for At.JS.-->
+            <!--var datasource = ["Jacob", "Isabella", "Ethan", "Emma", "Michael", "Olivia" ];-->
 
-            // Build data to be used in At.JS config.
-            var names = $.map(datasource, function (value, i) {
-                return {
-                    'id': i, 'name': value, 'email': value + "@email.com"
-                };
-            });
+            <!--// Build data to be used in At.JS config.-->
+            <!--var names = $.map(datasource, function (value, i) {-->
+                <!--return {-->
+                    <!--'id': i, 'name': value, 'email': value + "@email.com"-->
+                <!--};-->
+            <!--});-->
 
-            // Define config for At.JS.
-            var config = {
-                at: "@",
-                data: names,
-                displayTpl: '<li>${name} <small>${email}</small></li>',
-                limit: 200
-            }
+            <!--// Define config for At.JS.-->
+            <!--var config = {-->
+                <!--at: "@",-->
+                <!--data: names,-->
+                <!--displayTpl: '<li>${name} <small>${email}</small></li>',-->
+                <!--limit: 200-->
+            <!--}-->
 
-            // Initialize editor.
-            $('#froala-editor')
-                    .on('froalaEditor.initialized', function (e, editor) {
-                        editor.$el
-                                .atwho(config)
-                                .on('inserted.atwho', function () {
-                                    editor.$el.find('.atwho-inserted').removeAttr('contenteditable');
-                                })
+            <!--// Initialize editor.-->
+            <!--$('#froala-editor')-->
+                    <!--.on('froalaEditor.initialized', function (e, editor) {-->
+                        <!--editor.$el-->
+                                <!--.atwho(config)-->
+                                <!--.on('inserted.atwho', function () {-->
+                                    <!--editor.$el.find('.atwho-inserted').removeAttr('contenteditable');-->
+                                <!--})-->
 
-                        editor.events.on('keydown', function (e) {
-                            if (e.which == $.FroalaEditor.KEYCODE.ENTER && editor.$el.atwho('isSelecting')) {
-                                return false;
-                            }
-                        }, true);
-                    })
-                    .froalaEditor()
-        });
-    </script>
+                        <!--editor.events.on('keydown', function (e) {-->
+                            <!--if (e.which == $.FroalaEditor.KEYCODE.ENTER && editor.$el.atwho('isSelecting')) {-->
+                                <!--return false;-->
+                            <!--}-->
+                        <!--}, true);-->
+                    <!--})-->
+                    <!--.froalaEditor()-->
+        <!--});-->
+    <!--</script>-->
 </body>
 </html>

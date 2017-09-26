@@ -10,13 +10,3 @@ exports.users = function(callback) {
         callback(results);
     });
 }
-
-exports.register = function(params,callback) {
-    pool.query('insert into users (username, password,phone, nickname, avatar)  values (?,?,?,?,?)',
-        [parmas.username, params.password, params,phone, params.nickname, params.avatar],
-        function (error, results, fields) {
-        if (error) throw error;
-            callback(results);
-        // ...
-    });
-}
