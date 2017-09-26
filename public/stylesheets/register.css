@@ -1,0 +1,130 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    font-size: 14px;
+    margin: 0;
+    background-color: #e3efd2;
+}
+.header{
+    background-color: #6b9813;
+    color: #fff;
+    line-height: 50px;
+    font-family: "PingFang SC","微软雅黑",sans-serif;
+    height: 74px;
+}
+.header-container{
+    width:970px;
+    margin:0 auto;
+}
+.clearfloat{
+    zoom:1;
+}
+.clearfloat :after{
+    clear: both;
+    display: block;
+    content:".";
+    visibility: hidden;
+    height: 0;
+}
+.header-left{
+    float: left;
+    height: 71px;
+}
+a{
+    text-decoration: none;
+    color: #c7c7d2;
+    cursor: pointer;
+    font-size: 25px;
+}
+.header-right{
+    float: right;
+
+}
+.nav{
+    height:48px;
+}
+.nav>li>a{
+    transition: all .2s ease 0s;
+    margin: 12px 7px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: #fff;
+    line-height: 20px;
+}
+.header-right .nav>li{
+    list-style: none;
+    display: inline-block;
+    height:48px;
+}
+.blog{
+    font-size: 43px;
+    margin-top: 24px;
+    line-height: 20px;
+    display: inline-block;
+}
+.blog:hover{
+    color: #6bb97a;
+}
+.style:hover{
+    color: #1fde44;
+}
+.container{
+    margin-top: 112px;
+    width: 970px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.title-top{
+    font-size: 27px;
+    margin-top: 40px;
+    color: #96cca5;
+}
+.head-hr{
+    margin-top: 0;
+    border: 0;
+    border-top: 1px solid #b6e426;
+}
+.form-group{
+    margin-bottom: 30px;
+
+}
+.control-label{
+    width: 112px;
+    font-size: 16px;
+}
+.form-control{
+
+    background-color: #eae0e0;
+
+    width: 411px;
+    font-size: 13px;
+}
+.button{
+    text-align: center;
+    width: 525px;
+}
+.btn{
+    color: #fff;
+    background-color: #286090;
+    border-color: #204d74;
+    outline: 0;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    padding: 10px 34px;
+    font-size: 22px;
+    border-radius: 6px;
+    line-height: 1;
+}
+.active{
+    position: relative;
+    color: red;
+
+}
+.col-sm-9 .form-control-feedback{
+    right:264px;
+}
