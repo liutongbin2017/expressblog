@@ -4,14 +4,21 @@
 body{
     font-size: 14px;
     margin: 0;
-    background-color: #e3efd2;
 }
 .header{
-    background-color: #6b9813;
+    background-color: #283e5c;
     color: #fff;
     line-height: 50px;
     font-family: "PingFang SC","微软雅黑",sans-serif;
-    height: 74px;
+    top: 0;
+    border-width: 0 0 1px;
+    /*position: fixed;*/
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    height: 264px;
+    opacity: .5;
+    background: url(/images/banner_top.jpg);
 }
 .header-container{
     width:970px;
@@ -62,15 +69,16 @@ a{
     margin-top: 24px;
     line-height: 20px;
     display: inline-block;
+    color: #5a5aa7;
 }
 .blog:hover{
     color: #6bb97a;
+    text-decoration: none;
 }
 .style:hover{
     color: #1fde44;
 }
 .container{
-    margin-top: 112px;
     width: 970px;
     padding-right: 15px;
     padding-left: 15px;
