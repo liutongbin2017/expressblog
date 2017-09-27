@@ -98,7 +98,7 @@
                 alert("密码错误");
                 return false;
             }
-            window.open("./land.html")
+            window.open("/login");
         })
     })
 })(jQuery);

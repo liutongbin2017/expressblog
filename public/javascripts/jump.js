@@ -14,7 +14,7 @@
                 alert("username is error!");
                 return false;
             }
-            window.open("./home.html");
+            window.open("/home");
         })
     })
 })(jQuery)

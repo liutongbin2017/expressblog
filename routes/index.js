@@ -41,10 +41,36 @@ router.post('/register', function(req, res, next) {
 
 router.post('/login', function(req, res, next) {
   var params = req.body;
-  
+  var username = params.username,
+      password = params.password;
+
+  index.login(username,password,function(result){
+    console.log(result);
+    res.json(result);
+  });
 });
 
-
+//进入首页后数据的post（其中包括数据的种类，下面是我写的）
+router.post('/home',function(req,res,next){
+  var params = req.body;
+  var title = params.title,
+      content = params.content,
+      createTime = params.createTime,
+      abstract = params.abstract,
+      userId = params.userId,
+      tagId = params.tagId,
+      comment = params.comment,
+      articleId = params.articleId,
+      commentTime = params.commentTime,
+      pages = params.pages,
+      background = params.background,
+      name = params.name;
+  
+  index.login(title,content,createTime,abstract,userId,tagId,comment,articleId,commentTime,pages,background,name,function (result) {
+    console.log(result);
+    res.json(result);
+  })
+})
 
 
 module.exports = router;
