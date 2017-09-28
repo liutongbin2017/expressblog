@@ -23,6 +23,8 @@ router.get('/register', function(req, res, next) {
 });
 
 
+//----------------
+
 
 router.post('/register', function(req, res, next) {
   var params = req.body;
@@ -44,9 +46,21 @@ router.post('/login', function(req, res, next) {
   var username = params.username,
       password = params.password;
 
-  index.login(username,password,function(result){
+  index.login(username,function(result){
     console.log(result);
-    res.json(result);
+    var data = result[0];
+    if(data.password == password) {
+      req.session.user = data;
+      res.json({
+        code:200,
+        msg: "success"
+      })
+    } else {
+      res.json({
+        code:401,
+        msg: "登陆失败"
+      })
+    }
   });
 });
 

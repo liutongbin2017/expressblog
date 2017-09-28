@@ -72,7 +72,7 @@
             var $par = $this.parent();
             $par.removeClass("has-error").removeClass("has-success");
         })
-        $(".btn").click(function () {
+        $(".register-btn").click(function () {
             var text1 = $("#inputSuccess1").val();
             var text2 = $("#inputSuccess2").val();
             var text3 = $("#inputSuccess3").val();
@@ -98,7 +98,32 @@
                 alert("密码错误");
                 return false;
             }
-            window.open("/login");
+            $.ajax({
+                url:"/register",
+                type:"POST",
+                data:{
+                    username:text1,
+                    password:text2,
+                    phone:text3,
+                    nickname:text4,
+                    avatar:text5
+                },
+                success:function(res){
+
+                    console.log(res);
+                    if(res.affectedRows>0){
+                        location.href="/login";
+                    }else{
+                        alert("错误")
+                    }
+                },
+                error:function(res){
+                    console.log(res);
+
+                },
+
+            });
+            // window.open("/login");
         })
     })
 })(jQuery);

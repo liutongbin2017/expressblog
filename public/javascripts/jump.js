@@ -33,7 +33,7 @@
             $par = $this.parent();
             $par.removeClass("has-error").removeClass("has-success");
         })
-        $(".btn").click(function () {
+        $(".login-btn").click(function () {
             var username = $("#inputSuccess1").val();
             var password = $("#inputSuccess2").val();
             if($.trim(username)==""){
@@ -44,7 +44,25 @@
                 alert("username is error!");
                 return false;
             }
-            window.open("/home");
+            $.ajax({
+                url: "/login",
+                type: "post",
+                data: {
+                    username: username,
+                    password: password
+                },
+                success: function(res) {
+                    console.log(res);
+                    if(res.code == 200) {
+                        location.href = "/home";
+                    } else {
+                        alert("error")
+                    }
+                },
+                error: function(res) {
+                    console.log(res);
+                }
+            })
         })
     })
 })(jQuery)
