@@ -17,7 +17,7 @@ app.use(session({
   cookie: { secure: true,maxAge: 60000  }
 }))
 
-// view engine setup
+// view engine setup //test
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
