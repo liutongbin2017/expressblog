@@ -30,7 +30,7 @@ exports.login = function(username,callback){
 }
 
 exports.home = function(title,content,createTime,abstract,userId,tagId,comment,articleId,commentTime,pages,background,name){
-    var sql = "";
+    var sql = "select * from user where username = ?";
     db.execQuery(sql, insertValue,function (error, results, fields) {
         if (error) console.log(error);
         callback(results);

@@ -1,7 +1,7 @@
 
 ;(function($){
     $(function(){
-        $("#inputSuccess1").blur(function () {
+        $("#name").blur(function () {
             var text_value = $(this).val(),
                 $par = $(this).parent();
             console.log($par);
@@ -17,7 +17,7 @@
 
             $par.removeClass("has-error").removeClass("has-success");
         });
-        $("#inputSuccess2").blur(function () {
+        $("#nickname").blur(function () {
             var text_value = $(this).val();
             var $par =$(this).parent();
             if(text_value == ""){
@@ -31,7 +31,7 @@
             $par = $this.parent();
             $par.removeClass("has-error").removeClass("has-success");
         })
-        $("#inputSuccess3").blur(function () {
+        $("#phone").blur(function () {
             var text_value = $(this).val();
             var $par = $(this).parent();
             if(text_value == ""){
@@ -44,7 +44,7 @@
             var $par = $this.parent();
             $par.removeClass("has-error").removeClass("has-success")
         })
-        $("#inputSuccess4").blur(function () {
+        $("#password").blur(function () {
             var text_value = $(this).val();
             var $par = $(this).parent();
             if(text_value == ""){
@@ -58,7 +58,7 @@
             var $par = $this.parent();
             $par.removeClass("has-error").removeClass("has-success");
         })
-        $("#inputSuccess5").blur(function () {
+        $("#confirm_password").blur(function () {
             var text_value = $(this).val();
             var $par = $(this).parent();
             if(text_value == ""){
@@ -73,28 +73,28 @@
             $par.removeClass("has-error").removeClass("has-success");
         })
         $(".register-btn").click(function () {
-            var text1 = $("#inputSuccess1").val();
-            var text2 = $("#inputSuccess2").val();
-            var text3 = $("#inputSuccess3").val();
-            var text4 = $("#inputSuccess4").val();
-            var text5 = $("#inputSuccess5").val();
-            if($.trim(text1)==""){
+            var name = $("#name").val();
+            var nickname = $("#nickname").val();
+            var phone = $("#phone").val();
+            var password = $("#password").val();
+            var confirm_password = $("#confirm_password").val();
+            if($.trim(name)==""){
                 alert("用户名称错误");
                 return false;
             }
-            if($.trim(text2)==""){
+            if($.trim(nickname)==""){
                 alert("昵称错误");
                 return false;
             }
-            if($.trim(text3)==""){
+            if($.trim(phone)==""){
                 alert("手机号码错误");
                 return false;
             }
-            if($.trim(text4)==""){
+            if($.trim(password)==""){
                 alert("密码错误");
                 return false;
             }
-            if($.trim(text5)==""){
+            if($.trim(confirm_password)==""){
                 alert("密码错误");
                 return false;
             }
@@ -102,11 +102,11 @@
                 url:"/register",
                 type:"POST",
                 data:{
-                    username:text1,
-                    password:text2,
-                    phone:text3,
-                    nickname:text4,
-                    avatar:text5
+                    username:name,
+                    password:nickname,
+                    phone:phone,
+                    nickname:password,
+                    avatar:confirm_password
                 },
                 success:function(res){
 
