@@ -9,13 +9,25 @@ var session = require('express-session')
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+var api = require("./api/index");
+
+
 var app = express();
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true,maxAge: 60000  }
-}))
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}));
+
+app.use(function(req, res, next){
+  res.locals.session = req.session;
+
+  if(!res.locals.tags) {
+    api.tag(function(result) {
+      res.locals.tags = result;
+      next();
+    })
+  } else {
+    next();
+  }
+
+});
 
 // view engine setup //test
 app.set('views', path.join(__dirname, 'views'));

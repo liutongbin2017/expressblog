@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%=title%></title>
+    <link href="https://cdn.bootcss.com/bootstrap3-wysiwyg/0.3.3/bootstrap3-wysihtml5.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+
+    <!-- include summernote css/js-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/homePage.css">
+    <link type="text/css" rel="stylesheet" href="/stylesheets/hux-blog.css">
+
+</head>
+<body style="background-color: #e3efd2">
+<div class="header">
+    <div class="header-container clearfloat">
+        <div class="header-left">
+            <a href="#" class="blog">博客</a>
+        </div>
+    </div>
+
+    <div class="header-right">
+        <% if (session.user) { %>
+        <ul class="nav">
+            <li>
+                <a href="/" class="style"><%=session.user.username%></a>
+            </li>
+        </ul>
+        <% } else { %>
+        <ul class="nav">
+            <li>
+                <a href="/login" class="style">登陆</a>
+            </li>
+            <li>
+                <a href="/register" class="style">注册</a>
+            </li>
+        </ul>
+        <% } %>
+
+
+
+    </div>
+</div>
+<div class="head">
+    <ul class="nav">
+        <li>
+            <a href="/">
+                首页
+            </a>
+        </li>
+        <li>
+            <a href="/personaList">
+                个人博客列表
+            </a>
+        </li>
+        <li>
+            <a href="/personalDetail">
+                个人博客详情
+            </a>
+        </li>
+        <li>
+            <a href="/personalInformation">
+                个人信息
+            </a>
+        </li>
+        <li>
+            <a href="/pageSetuo">
+                页面设置
+            </a>
+        </li>
+        <li>
+            <a href="/post">
+                发表博客
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="personalInformation" class="tab-pane ">
+    <!--<div class="picture">-->
+        <!--<p data-scroll-reveal="enter top over 2s" data-scroll-reveal-id="2" style="-webkit-transform: translatey(0);transform: translatey(0);opacity: 1;-webkit-transition: -webkit-transform 2s ease-in-out 0s,  opacity 2s ease-in-out 0s;transition: transform 2s ease-in-out 0s, opacity 2s ease-in-out 0s;-webkit-perspective: 1000;-webkit-backface-visibility: hidden;" data-scroll-reveal-initialized="true">我们不停的翻弄着回忆，却再也找不回那时的自己</p>-->
+        <!--<p data-scroll-reveal="enter left over 2s after 1s" data-scroll-reveal-id="3" style="-webkit-transform: translatex(0);transform: translatex(0);opacity: 1;-webkit-transition: -webkit-transform 2s ease-in-out 1s,  opacity 2s ease-in-out 1s;transition: transform 2s ease-in-out 1s, opacity 2s ease-in-out 1s;-webkit-perspective: 1000;-webkit-backface-visibility: hidden;" data-scroll-reveal-initialized="true">人生，是一场盛大的遇见。若你懂得，就请珍惜。</p>-->
+        <!--<p data-scroll-reveal="enter bottom over 2s after 2s" data-scroll-reveal-id="4" style="-webkit-transform: translatey(0);transform: translatey(0);opacity: 1;-webkit-transition: -webkit-transform 2s ease-in-out 2s,  opacity 2s ease-in-out 2s;transition: transform 2s ease-in-out 2s, opacity 2s ease-in-out 2s;-webkit-perspective: 1000;-webkit-backface-visibility: hidden;" data-scroll-reveal-initialized="true">无论下多久的雨，最后都会有彩虹；无论你多么悲伤，要相信幸福在前方等候.</p>-->
+    <!--</div>-->
+    <div class="bs-example" data-example-id="body-copy">
+        <h1>Just about me</h1>
+        <% if (session.user) { %>
+        <p>昵称：<%=session.user.username%></p>
+        <p>手机号：<%=session.user.phone%></p>
+        <% } else { %>
+        <p>昵称：追魂</p>
+        <p>手机号：110</p>
+        <p>密码：********</p>
+        <% } %>
+
+    </div>
+</div>
+
+<!--<script type="text/javascript" src="/javascripts/jQuery.js"></script>-->
+
+<script src="https://cdn.bootcss.com/jquery/2.1.2/jquery.js"></script>
+<script src="/javascripts/bootstrap.min.js"></script>
+<!--<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>-->
+
+<!--<script type="text/javascript" src="/javascripts/edit.js"></script>-->
+
+<!--<script type="text/javascript" src="/javascripts/jQuery.js"></script>-->
+<!--<script type="text/javascript" src="/javascripts/login.js"></script>-->
+<script src="/javascripts/bootstrap.min.js"></script>
+
+
+<!-- Initialize the editor. -->
+<!--<script> $(function() {-->
+    <!--$('#summernote').summernote();-->
+<!--});-->
+<!--</script>-->
+</body>
+</html>

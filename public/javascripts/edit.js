@@ -3,41 +3,52 @@
  */
 ;(function ($) {
     $(function () {
-        $(function() {
-            // Define data source for At.JS.
-            var datasource = ["Jacob", "Isabella", "Ethan", "Emma", "Michael", "Olivia" ];
 
-            // Build data to be used in At.JS config.
-            var names = $.map(datasource, function (value, i) {
-                return {
-                    'id': i, 'name': value, 'email': value + "@email.com"
-                };
+        $(".tab-content").on('click','.post-btn', function(e){
+            // alert(34);
+            // e.preventOverflow();
+            var title = $("#exampleInputTitle").val();
+            var abstract = $("#exampleInputAbstract").val();
+            var content = $('#summernote').summernote('code');
+            var tags = "";
+            $(".checkbox-inline input[type=checkbox]:checked").each(function(i,item){
+                tags += $(item).data("id") + ",";
+
             });
 
-            // Define config for At.JS.
-            var config = {
-                at: "@",
-                data: names,
-                displayTpl: '<li>${name} <small>${email}</small></li>',
-                limit: 200
-            }
+            tags = tags.slice(0,-1);
+            $.ajax({
+                url:"/post/article",
+                type:"post",
+                data:{
+                    title:title,
+                    abstract:abstract,
+                    content:content,
+                    tags:tags
+                },
+                success:function(res){
+                    console.log(res);
+                    // location.href="/";
+                },
+                error:function(res){
+                    console.log(res);
+                }
+            })
+        })
+        $(".tab-content").on('click','#personaList',function(){
+            // window.location.href="/personaList";
+        })
+        $(".tab-content").on('click','#personalDetail',function(){
 
-            // Initialize editor.
-            $('#froala-editor')
-                .on('froalaEditor.initialized', function (e, editor) {
-                    editor.$el
-                        .atwho(config)
-                        .on('inserted.atwho', function () {
-                            editor.$el.find('.atwho-inserted').removeAttr('contenteditable');
-                        })
+        })
+        $(".tab-content").on('click','#personalInformation',function(){
 
-                    editor.events.on('keydown', function (e) {
-                        if (e.which == $.FroalaEditor.KEYCODE.ENTER && editor.$el.atwho('isSelecting')) {
-                            return false;
-                        }
-                    }, true);
-                })
-                .froalaEditor()
-        });
+        })
+        $(".tab-content").on('click','#pageSetuo',function(){
+
+        })
+        $(".tab-content").on('click','#post',function(){
+
+        })
     })
-})(jQuery)
+})(jQuery);

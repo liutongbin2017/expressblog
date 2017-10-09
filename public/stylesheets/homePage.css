@@ -16,6 +16,9 @@
     opacity: .5;
     background: url(/images/banner_top.jpg);
 }
+.head .nav>li{
+    display: inline-block;
+}
 .header-container{
     width:970px;
     margin:0 auto;

@@ -5,12 +5,21 @@ var index = require("../api/index");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: '首页' });
+  index.getAllArticleMin(function(result) {
+    for(var i = 0; i < result.length; i++) {
+      var time = result[i].createTime;
+      var date = new Date(time);
+      result[i].createTime = date;
+      
+    }
+    res.render('index', { title: '首页', list: result});
+  })
+
 });
 
-router.get('/home', function(req, res, next) {
-  res.render('home', { title: 'blog' });
-});
+// router.get('/home', function(req, res, next) {
+//   res.render('home', { title: 'blog' });
+// });
 
 
 router.get('/login', function(req, res, next) {
@@ -22,6 +31,22 @@ router.get('/register', function(req, res, next) {
   res.render('register', { title: '注册' });
 });
 
+
+router.get('/personaList', function(req, res, next) {
+  res.render('personaList', { title: '个人博客列表' });
+});
+router.get('/personalDetail', function(req, res, next) {
+  res.render('personalDetail', { title: '个人博客详情' });
+});
+router.get('/personalInformation', function(req, res, next) {
+  res.render('personalInformation', { title: '个人信息' });
+});
+router.get('/pageSetuo', function(req, res, next) {
+  res.render('pageSetuo', { title: '页面设置' });
+});
+router.get('/post', function(req, res, next) {
+  res.render('post', { title: '发表博客' });
+});
 
 //----------------
 
@@ -65,26 +90,25 @@ router.post('/login', function(req, res, next) {
 });
 
 //进入首页后数据的post（其中包括数据的种类，下面是我写的）
-router.post('/home',function(req,res,next){
+
+
+router.post('/post/article', function(req, res, next) {
   var params = req.body;
   var title = params.title,
-      content = params.content,
-      createTime = params.createTime,
       abstract = params.abstract,
-      userId = params.userId,
-      tagId = params.tagId,
-      comment = params.comment,
-      articleId = params.articleId,
-      commentTime = params.commentTime,
-      pages = params.pages,
-      background = params.background,
-      name = params.name;
-  
-  index.login(title,content,createTime,abstract,userId,tagId,comment,articleId,commentTime,pages,background,name,function (result) {
+      content = params.content,
+      tags = params.tags,
+      createTime = new Date().valueOf(),
+      userId = req.session.user.id;
+
+
+  index.postArticle(title,abstract,content,tags,createTime,userId,function(result){
     console.log(result);
     res.json(result);
-  })
-})
+  });
+});
+
+
 
 
 module.exports = router;

@@ -27,6 +27,28 @@
                 <a href="#" class="blog">博客</a>
             </div>
         </div>
+
+        <div class="header-right">
+            <% if (session.user) { %>
+            <ul class="nav">
+                <li>
+                    <a href="/" class="style"><%=session.user.username%></a>
+                </li>
+            </ul>
+            <% } else { %>
+            <ul class="nav">
+                <li>
+                    <a href="/login" class="style">登陆</a>
+                </li>
+                <li>
+                    <a href="/register" class="style">注册</a>
+                </li>
+            </ul>
+            <% } %>
+
+
+
+        </div>
     </div>
     <div class="head">
         <ul class="nav nav-tabs">

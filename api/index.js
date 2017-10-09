@@ -29,8 +29,53 @@ exports.login = function(username,callback){
     });
 }
 
+
+
+exports.getAllArticleMin = function(callback){
+    var sql = "select title, abstract, createTime from article" ;
+    db.execQuery(sql, [],function (error, results, fields) {
+        if (error) console.log(error);
+        callback(results);
+        // ...
+    });
+}
+
+exports.getAllArticle = function(callback){
+    var sql = "select * from article" ;
+    db.execQuery(sql, [],function (error, results, fields) {
+        if (error) console.log(error);
+        callback(results);
+        // ...
+    });
+}
+
+
 exports.home = function(title,content,createTime,abstract,userId,tagId,comment,articleId,commentTime,pages,background,name){
     var sql = "select * from user where username = ?";
+    db.execQuery(sql, insertValue,function (error, results, fields) {
+        if (error) console.log(error);
+        callback(results);
+        // ...
+    });
+}
+
+
+exports.tag = function(callback){
+    var sql = "select * from tag";
+    db.execQuery(sql, [],function (error, results, fields) {
+        if (error) console.log(error);
+        callback(results);
+        // ...
+    });
+}
+
+
+exports.postArticle = function(title,abstract,content,tags,createTime,userId,callback) {
+
+    var sql = "INSERT INTO article (title,abstract,content,tagId,createTime,userId)  VALUES (?,?,?,?,?,?)";
+
+    var insertValue = [title,abstract,content,tags,createTime,userId];
+
     db.execQuery(sql, insertValue,function (error, results, fields) {
         if (error) console.log(error);
         callback(results);
